@@ -22,6 +22,10 @@ function renderElement(element) {
     return element.map((ele) => renderElement(ele));
   }
 
+  if (typeof element.type === 'function') {
+    return renderElement(element.type(element.props));
+  }
+
   if (typeof element === 'string') {
     return document.createTextNode(element);
   }

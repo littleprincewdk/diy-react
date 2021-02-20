@@ -1,7 +1,44 @@
 .list {
-  margin: 0;
+  margin: 20px;
 }
 
 .item {
+  display: flex;
+  align-items: center;
+  line-height: 50px;
   color: #333;
+  border-bottom: solid 1px #ccc;
+}
+
+.title {
+  margin-left: 10px;
+}
+
+.checkbox {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+}
+
+.checkbox.checked {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+.checkbox::after {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 5px;
+  height: 9px;
+  display: table;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(45deg) translate(-50%, -50%);
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  content: ' ';
 }
