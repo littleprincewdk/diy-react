@@ -3,6 +3,7 @@
   "plugins": [
     "prettier"
   ],
+  "parser": "@babel/eslint-parser",
   "env": {
     "browser": true
   },
@@ -11,6 +12,7 @@
 
     "no-console": "off",
     "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
     
     "import/prefer-default-export": "off",
 
@@ -19,13 +21,16 @@
     "jsx-a11y/no-static-element-interactions": "off",
 
     "react/prop-types": "off",
+    "react/state-in-constructor": "off",
   },
   "settings": {
     "import/resolver": {
       "eslint-import-resolver-custom-alias": {
         "alias": {
           "react": "./src/react",
-          "react-dom": "./src/react-dom"
+          "react-reconciler": "./src/react-reconciler",
+          "react-dom": "./src/react-dom",
+          "react-shared": "./src/react-shared"
         },
         "extensions": [
           ".js",

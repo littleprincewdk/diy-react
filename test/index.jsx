@@ -8,18 +8,41 @@ const TODOList = [
   { id: 3, title: 'swimming' },
 ];
 
-function Checkbox(props) {
-  const { checked, onClick } = props;
-  return (
-    <div className={`${styles.checkbox} ${checked ? styles.checked : ''}`} onClick={onClick} />
-  );
+class Checkbox extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checked: props.checked,
+    };
+  }
+
+  handleClick = () => {
+    const { onClick } = this.props;
+    const { checked } = this.state;
+
+    this.setState({
+      checked: !checked,
+    });
+
+    onClick(!checked);
+  };
+
+  render() {
+    const { checked } = this.state;
+
+    return (
+      <div
+        className={`${styles.checkbox} ${checked ? styles.checked : ''}`}
+        onClick={this.handleClick}
+      />
+    );
+  }
 }
 
-function handleClick(todoId) {
+function handleClick(todoId, checked) {
   const todo = TODOList.find((item) => item.id === todoId);
-  todo.done = !todo.done;
-  // eslint-disable-next-line no-use-before-define
-  render();
+  todo.done = checked;
 }
 
 function App() {
@@ -27,7 +50,7 @@ function App() {
     <div className={styles.list} style={{ fontSize: 20 }}>
       {TODOList.map((todo) => (
         <div className={styles.todo}>
-          <Checkbox checked={todo.done} onClick={() => handleClick(todo.id)} />
+          <Checkbox checked={todo.done} onClick={(checked) => handleClick(todo.id, checked)} />
           <span className={styles.title}>{todo.title}</span>
         </div>
       ))}

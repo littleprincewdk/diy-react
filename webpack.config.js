@@ -17,10 +17,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: [['@babel/preset-env', { targets: 'chrome > 70' }]],
-            plugins: [['@babel/plugin-transform-react-jsx']],
-          },
         },
       },
       {
@@ -44,7 +40,9 @@ module.exports = {
   resolve: {
     alias: {
       react: path.resolve('src/react'),
+      'react-reconciler': path.resolve('src/react-reconciler'),
       'react-dom': path.resolve('src/react-dom'),
+      'react-shared': path.resolve('src/react-shared'),
     },
   },
   plugins: [
